@@ -43,12 +43,15 @@ public class GestioneFile {
         String password = input.nextLine();
         String passwordC= m.cifra(password);
         Scrittore Copia = new Scrittore("user.json", usernameC, passwordC);
-        Scrittore copiacsv = new Scrittore("user.csv", usernameC,passwordC);
+        Scrittore usercsv = new Scrittore("user.csv", usernameC,passwordC);
+        Scrittore copiacsv = new Scrittore("copia.csv", usernameC,passwordC);
         //3) SCRITTURA
        
         Thread threadScrittore = new Thread(Copia);
+        Thread threaduser= new Thread(usercsv);
         Thread threadCopia= new Thread(copiacsv);
         threadScrittore.start();
+        threaduser.start();
         threadCopia.start();
     }
     
